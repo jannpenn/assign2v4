@@ -25,7 +25,7 @@ SECRET_KEY = '9uj@j%d2q0a**1z546$*$^fp(v^gyz9#q%91%3evh!)=m%&&w&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'pythonanywhere.com', 'herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'mathfilters',
     'django.contrib.humanize',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

@@ -10,6 +10,12 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import CustomerSerializer
+
+
 
 now = timezone.now()
 
@@ -157,5 +163,14 @@ def summary(request, pk):
                                                     'services': services,
                                                     'sum_service_charge': sum_service_charge,
                                                     'sum_product_charge': sum_product_charge,})
+
+
+class CustomerList(APIView):
+
+    def get(self,request):
+        customers_json = Customer.objects.all()
+        serializer = CustomerSerializer(customers_json, many=True)
+        return Response(serializer.data)
+
 
 
